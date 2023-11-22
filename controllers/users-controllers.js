@@ -12,7 +12,7 @@ exports.signup = async (req, res, next) => {
 
   if (!name || !email || !password || !image) {
     console.log({ name, email, password });
-    return next(new HttpError("Please enter all required  fields"));
+    return next(new HttpError("Please enter all required  fields", 401));
   }
 
   const userExist = await UserModel.findOne({ email });
@@ -24,9 +24,7 @@ exports.signup = async (req, res, next) => {
   const token = generateToken(newUser._id);
   newUser.password = undefined;
 
-  res
-    .status(201)
-    .json({ status: "success", token, data: { user: newUser.toObject() } });
+  res.status(201).json({ status: "success", token, data: user });
 };
 
 exports.login = async (req, res, next) => {
