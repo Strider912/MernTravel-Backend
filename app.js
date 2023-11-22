@@ -5,8 +5,10 @@ var bodyParser = require("body-parser");
 const userRoutes = require("./routes/users-routes");
 const placeRoutes = require("./routes/places-routes");
 const HttpError = require("./models/http-error");
+const cors = require("cors");
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/uploads/images", express.static(path.join("uploads", "images")));
