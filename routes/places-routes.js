@@ -13,7 +13,7 @@ router.use(checkAuth);
 // router.route("/").post(placesControllers.createPlace);
 router.post("/", fileUpload.single("image"), placesControllers.createPlace);
 
-router.route("/:pid").patch(placesControllers.updatePlace);
+router.patch("/:pid", placesControllers.updatePlace);
 
 router.delete("/:pid", placesControllers.deletePlace);
 
