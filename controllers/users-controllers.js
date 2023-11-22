@@ -24,7 +24,7 @@ exports.signup = async (req, res, next) => {
   const token = generateToken(newUser._id);
   newUser.password = undefined;
 
-  res.status(201).json({ status: "success", token, data: user });
+  res.status(201).json({ status: "success", token, data: newUser });
 };
 
 exports.login = async (req, res, next) => {
